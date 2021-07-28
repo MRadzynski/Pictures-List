@@ -22,7 +22,9 @@ const List = () => {
   return (
     <View style={{flex: 1}}>
       {isLoading ? (
-        <ActivityIndicator color="black" size="large" />
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <ActivityIndicator color="#00b0ff" size="large" />
+        </View>
       ) : (
         <FlatList
           data={data}
