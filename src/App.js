@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import List from './components/List/List';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -27,13 +28,9 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Text> Hello World!!!? </Text>
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView>
+      <List />
+    </ScrollView>
   );
 };
 
