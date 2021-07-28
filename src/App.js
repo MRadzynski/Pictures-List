@@ -28,9 +28,9 @@ const App = () => {
   };
 
   return (
-    <ScrollView>
+    <View style={{flex: 1, padding: 24}}>
       <List />
-    </ScrollView>
+    </View>
   );
 };
 
