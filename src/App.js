@@ -1,23 +1,31 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, {useState, useEffect} from 'react';
 
-import React from 'react';
+import {View} from 'react-native';
 
-import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {refreshList, sortByAuthor, sortById} from './utils/listActions';
+import {getPictures} from './utils/getPictures';
 
 import List from './components/List/List';
 import Footer from './components/Footer/Footer';
 
 const App = () => {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getPictures(setData, setLoading);
+  }, []);
+
+  const buttonActions = {
+    refreshList: () => refreshList(setData, setLoading),
+    sortByAuthor: () => sortByAuthor(data, setData),
+    sortById: () => sortById(data, setData),
+  };
+  console.log('app', data);
   return (
     <View style={{flex: 1, padding: 8, paddingBottom: 0}}>
-      <List style={{flex: 7}} />
-      <Footer style={{flex: 1}} />
+      <List style={{flex: 7}} data={data} isLoading={isLoading} />
+      <Footer style={{flex: 1}} buttonActions={buttonActions} />
     </View>
   );
 };

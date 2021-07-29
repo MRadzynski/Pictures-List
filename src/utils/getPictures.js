@@ -1,5 +1,6 @@
 export const getPictures = async (setData, setLoading) => {
   try {
+    setLoading(true);
     const res = await fetch('https://picsum.photos/v2/list');
     const data = await res.json();
     setData(data);

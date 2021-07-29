@@ -1,23 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
+import React from 'react';
+import {ActivityIndicator, FlatList, View} from 'react-native';
 
 import ListItem from '../ListItem/ListItem';
 
-import {getPictures} from '../../utils/getPictures';
-
-const List = () => {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    getPictures(setData, setLoading);
-  }, []);
+const List = ({data, isLoading}) => {
+  const renderItem = ({item}) => <ListItem item={item} />;
 
   return (
     <View style={{flex: 1}}>
@@ -29,7 +16,7 @@ const List = () => {
         <FlatList
           data={data}
           keyExtractor={({id}) => id}
-          renderItem={({item}) => <ListItem item={item} />}
+          renderItem={renderItem}
         />
       )}
     </View>
