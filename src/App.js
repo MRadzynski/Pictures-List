@@ -1,59 +1,33 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, {useState, useEffect} from 'react';
 
-import React from 'react';
+import {View} from 'react-native';
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {refreshList, sortByAuthor, sortById} from './utils/listActions';
+import {getPictures} from './utils/getPictures';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import List from './components/List/List';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  useEffect(() => {
+    getPictures(setData, setLoading);
+  }, []);
+
+  const buttonActions = {
+    refreshList: () => refreshList(setData, setLoading),
+    sortByAuthor: () => sortByAuthor(setData),
+    sortById: () => sortById(setData),
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Text> Hello World!!!? </Text>
-      </ScrollView>
-    </SafeAreaView>
+    <View style={{flex: 1, padding: 8, paddingBottom: 0}}>
+      <List style={{flex: 7}} data={data} isLoading={isLoading} />
+      <Footer style={{flex: 1}} buttonActions={buttonActions} />
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
