@@ -28,16 +28,10 @@ export const refreshList = (setData, setLoading) => {
   getPictures(setData, setLoading);
 };
 
-export const sortByAuthor = (data, setData) => {
-  const sortedData = data.sort(compareAuthors);
-  console.log(sortedData);
-  setData(sortedData);
-  // setData(currentData => currentData.sort(compareAuthors));
+export const sortByAuthor = setData => {
+  setData(currentData => [...currentData].sort(compareAuthors));
 };
 
-export const sortById = (data, setData) => {
-  const sortedData = data.sort(compareIds);
-  setData(sortedData);
-  console.log(sortedData);
-  // setData(currentData => currentData.sort(compareIds));
+export const sortById = setData => {
+  setData(currentData => [...currentData].sort(compareIds));
 };

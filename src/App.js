@@ -18,10 +18,10 @@ const App = () => {
 
   const buttonActions = {
     refreshList: () => refreshList(setData, setLoading),
-    sortByAuthor: () => sortByAuthor(data, setData),
-    sortById: () => sortById(data, setData),
+    sortByAuthor: () => sortByAuthor(setData),
+    sortById: () => sortById(setData),
   };
-  console.log('app', data);
+
   return (
     <View style={{flex: 1, padding: 8, paddingBottom: 0}}>
       <List style={{flex: 7}} data={data} isLoading={isLoading} />
