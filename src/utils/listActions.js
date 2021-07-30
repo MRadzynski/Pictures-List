@@ -11,10 +11,10 @@ const compareAuthors = (a, b) => {
   const authorA = a.author.split(' ');
   const authorB = b.author.split(' ');
 
-  const lastNameA = authorA[authorA.length - 1].toUpperCase();
-  const lastNameB = authorB[authorB.length - 1].toUpperCase();
-  const firstNameA = authorA[0].toUpperCase();
-  const firstNameB = authorB[0].toUpperCase();
+  const lastNameA = authorA[authorA.length - 1].toLowerCase();
+  const lastNameB = authorB[authorB.length - 1].toLowerCase();
+  const firstNameA = authorA[0].toLowerCase();
+  const firstNameB = authorB[0].toLowerCase();
 
   if (lastNameA > lastNameB) return 1;
   if (lastNameA < lastNameB) return -1;
@@ -23,15 +23,16 @@ const compareAuthors = (a, b) => {
   return 0;
 };
 
-export const refreshList = (setData, setLoading) => {
+export const refreshList = (setData, setCopiedData, setLoading, setQuery) => {
   setData([]);
-  getPictures(setData, setLoading);
+  setQuery('');
+  getPictures(setData, setCopiedData, setLoading);
 };
 
-export const sortByAuthor = setData => {
-  setData(currentData => [...currentData].sort(compareAuthors));
+export const sortByAuthor = (setCopiedData, newData) => {
+  setCopiedData([...newData].sort(compareAuthors));
 };
 
-export const sortById = setData => {
-  setData(currentData => [...currentData].sort(compareIds));
+export const sortById = (setCopiedData, newData) => {
+  setCopiedData([...newData].sort(compareIds));
 };
