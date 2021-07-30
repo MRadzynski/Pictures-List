@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   textField: {
     marginBottom: 16,
     paddingBottom: 8,
@@ -9,3 +9,5 @@ export const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
+
+export default styles;

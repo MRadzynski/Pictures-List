@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 
-import {refreshList, sortByAuthor, sortById} from './utils/listActions';
-import {getPictures} from './utils/getPictures';
+import {refreshList} from './utils/listActions';
+import getPictures from './utils/getPictures';
 import dataFormatter from './utils/dataFormatter';
 
 import Searchbar from './components/Searchbar/Searchbar';
@@ -27,9 +27,8 @@ const App = () => {
   return (
     <View style={{flex: 1, padding: 8, paddingBottom: 0}}>
       <Searchbar query={query} setQuery={setQuery} />
-      <List style={{flex: 7}} data={copiedData} isLoading={isLoading} />
+      <List data={copiedData} isLoading={isLoading} />
       <Footer
-        style={{flex: 1}}
         refreshList={() =>
           refreshList(setData, setCopiedData, setLoading, setQuery)
         }

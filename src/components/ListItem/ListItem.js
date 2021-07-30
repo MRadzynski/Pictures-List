@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   View,
   Text,
@@ -7,7 +6,8 @@ import {
   TouchableWithoutFeedback,
   Linking,
 } from 'react-native';
-import {styles} from './ListItem.styles';
+
+import styles from './ListItem.styles';
 
 const ListItem = ({item}) => {
   const handleOpenUrl = () => {

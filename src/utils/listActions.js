@@ -1,4 +1,4 @@
-import {getPictures} from './getPictures';
+import getPictures from './getPictures';
 
 const compareIds = (a, b) => {
   const idA = a.id;

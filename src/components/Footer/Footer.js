@@ -3,7 +3,7 @@ import {View} from 'react-native';
 
 import CustomButton from '../CustomButton/CustomButton';
 
-import {styles} from './Footer.styles';
+import styles from './Footer.styles';
 
 const Footer = ({refreshList, setSortType}) => {
   return (

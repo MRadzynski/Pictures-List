@@ -1,8 +1,7 @@
 import React from 'react';
-
 import {View, TextInput} from 'react-native';
 
-import {styles} from './Searchbar.styles';
+import styles from './Searchbar.styles';
 
 const Searchbar = ({query, setQuery}) => {
   const handleChange = e => {

@@ -3,13 +3,15 @@ import {ActivityIndicator, FlatList, View} from 'react-native';
 
 import ListItem from '../ListItem/ListItem';
 
+import styles from './List.styles';
+
 const List = ({data, isLoading}) => {
   const renderItem = ({item}) => <ListItem item={item} />;
 
   return (
     <View style={{flex: 1}}>
       {isLoading ? (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.container}>
           <ActivityIndicator color="#00b0ff" size="large" />
         </View>
       ) : (

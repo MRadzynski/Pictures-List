@@ -1,4 +1,4 @@
-export const getPictures = async (setData, setCopiedData, setLoading) => {
+const getPictures = async (setData, setCopiedData, setLoading) => {
   try {
     setLoading(true);
     const res = await fetch('https://picsum.photos/v2/list');
@@ -12,3 +12,5 @@ export const getPictures = async (setData, setCopiedData, setLoading) => {
     setLoading(false);
   }
 };
+
+export default getPictures;
